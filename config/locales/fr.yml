@@ -55,3 +55,14 @@ en:
       zip_presence: "zip doit être défini"
       city_presenece: "city doit être défini"
       country: "country doit être défini"
+    activerecord:
+    errors:
+      models:
+        base_location_type:
+          attributes:
+            name:
+              blank: "ne peut pas être vide"
+              exclusion: "est réservé"
+            depth_level:
+              blank: "ne peut pas être vide"
+              inclusion: "n'est pas inclus dans la liste"

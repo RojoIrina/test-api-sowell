@@ -86,3 +86,10 @@ en:
       zip_presence: "zip should be present"
       city_presenece: "city should be present"
       country: "country should be present"
+     base_location_type:
+      name:
+        blank: "The 'name' field cannot be empty"
+        exclusion: "The value is reserved"
+      depth_level:
+        blank: "The 'depth_level' field cannot be empty"
+        inclusion: "The value is not included in the allowed list (1, 2, 3)"
