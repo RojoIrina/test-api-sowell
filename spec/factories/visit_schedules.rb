@@ -3,5 +3,6 @@ FactoryBot.define do
     due_at { Date.today.next_month }
     place { association :place, company: checklist.company }
     checklist
+    association :base_location_type
   end
 end

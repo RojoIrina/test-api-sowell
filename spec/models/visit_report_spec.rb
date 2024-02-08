@@ -69,4 +69,28 @@ RSpec.describe VisitReport, type: :model do
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
+
+  describe 'validations' do
+    it 'validates single location relation' do
+      visit_schedule = build(:visit_schedule)
+      expect(visit_schedule).to be_valid
+
+      
+      visit_schedule.place = create(:place, company: visit_schedule.checklist.company)
+      visit_schedule.spot = create(:spot, place: visit_schedule.place)
+      expect(visit_schedule).to_not be_valid
+      expect(visit_schedule.errors[:base_location_type]).to include('must have only one location relation')
+    end
+
+    it 'validates depth_level correspondence' do
+       base_location_type = create(:base_location_type, depth_level: :spot)
+       visit_schedule = build(:visit_schedule, base_location_type: base_location_type)
+       expect(visit_schedule).to be_valid
+       visit_schedule.base_location_type = create(:base_location_type, depth_level: :residence)
+       expect(visit_schedule).to_not be_valid
+       expect(visit_schedule.errors[:base_location_type]).to include('depth_level must correspond to the specified location')
+    end
+  end
+
+
 end

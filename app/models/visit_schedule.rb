@@ -2,6 +2,7 @@ class VisitSchedule < ApplicationRecord
   include VisitScheduleValidatable
   include VisitScheduleObserver
 
+
   belongs_to :place
   belongs_to :checklist
   attr_accessor :skip_due_at_validation
