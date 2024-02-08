@@ -4,5 +4,7 @@ FactoryBot.define do
     description { Faker::Lorem.sentence }
     issue_type
     checklist { association :checklist, company: issue_type.company }
+    association :spot
+    association :residence
   end
 end
