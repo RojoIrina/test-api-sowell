@@ -83,4 +83,14 @@ RSpec.describe Checkpoint, type: :model do
       expect(checkpoint).to be_valid
     end
   end
+
+  describe "#spot and residence relations" do
+    it "can have a spot_id or a residence_id, but not both" do
+      checkpoint.spot = create(:spot)
+      checkpoint.residence = create(:residence)
+      expect(checkpoint).not_to be_valid
+      expect(checkpoint.errors[:base]).to include("A checkpoint can have either a spot_id or a residence_id, but not both.")
+    end
+  end
+  
 end
